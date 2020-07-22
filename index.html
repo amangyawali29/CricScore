@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cricket Live Scores</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="favicon icon" sizes="180x180" href="img/favicon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Bungee Shade' rel='stylesheet'>
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-inverse mynav">
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="font-size: larger;"><img src="img/favicon.png" width="20" height="25">CricScore</a></li>
+            </ul>
+            <p class="navbar-text">Get Live Cricket Score, Scorecard, Schedules</p>
+        </nav>
+        <div class="container">
+            <div id="myCarousel" class="carousel slide  maslide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+                <li data-target="#myCarousel" data-slide-to="5"></li>
+                <li data-target="#myCarousel" data-slide-to="6"></li>
+              </ol>
+          
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" style="width:100%;">
+
+                <div class="item active ma"><br> 
+                    <p id="series_name1"></p>
+                    <p id="match_number1"></p>
+                    <div class="teams">
+                        <div id="ht" style="float: right;"> 
+                            <p id="home_team1"></p>
+                            <p id="homescore1"></p>
+                            <p id="homeover1"></p> 
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team1"></p>
+                            <p id="awayscore1"></p>
+                            <p id="awayover1"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary1"></p>
+                    <a href="/scorecard1.html"><button id="sc1">View Scorecard</button></a>
+                </div>
+          
+                <div class="item ma"><br>
+                    <p id="series_name2"></p>
+                    <p id="match_number2"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team2"></p>
+                            <p id="homescore2"></p>
+                            <p id="homeover2"></p>
+                    
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team2"></p>
+                            <p id="awayscore2"></p>
+                            <p id="awayover2"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary2"></p>
+                    <a href="/scorecard2.html"><button id="sc2">View Scorecard</button></a>
+                </div>
+              
+                <div class="item ma"><br>
+                    <p id="series_name3"></p>
+                    <p id="match_number3"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team3"></p>
+                            <p id="homescore3"></p>
+                            <p id="homeover3"></p>
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team3"></p>
+                            <p id="awayscore3"></p>
+                            <p id="awayover3"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary3"></p>
+                    <a href="/scorecard3.html"><button id="sc3">View Scorecard</button></a>
+                </div>
+
+                <div class="item ma"><br>
+                    <p id="series_name4"></p>
+                    <p id="match_number4"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team4"></p>
+                            <p id="homescore4"></p>
+                            <p id="homeover4"></p>
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team4"></p>
+                            <p id="awayscore4"></p>
+                            <p id="awayover4"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary4"></p>
+                    <a href="/scorecard4.html"><button id="sc4">View Scorecard</button></a>
+                </div>
+
+                <div class="item ma"><br>
+                    <p id="series_name5"></p>
+                    <p id="match_number5"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team5"></p>
+                            <p id="homescore5"></p>
+                            <p id="homeover5"></p>
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team5"></p>
+                            <p id="awayscore5"></p>
+                            <p id="awayover5"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary5"></p>
+                    <a href="/scorecard5.html"><button id="sc5">View Scorecard</button></a>
+                </div>
+
+                <div class="item ma"><br>
+                    <p id="series_name6"></p>
+                    <p id="match_number6"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team6"></p>
+                            <p id="homescore6"></p>
+                            <p id="homeover6"></p>
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team6"></p>
+                            <p id="awayscore6"></p>
+                            <p id="awayover6"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary6"></p>
+                    <a href="/scorecard6.html"><button id="sc6">View Scorecard</button></a>
+                </div>
+
+                <div class="item ma"><br>
+                    <p id="series_name7"></p>
+                    <p id="match_number7"></p>
+                    <div class="teams">
+                        <div id="ht"> 
+                            <p id="home_team7"></p>
+                            <p id="homescore7"></p>
+                            <p id="homeover7"></p>
+                        </div>
+                        <div id="hl">VS</div>
+                        <div id="at">
+                            <p id="away_team7"></p>
+                            <p id="awayscore7"></p>
+                            <p id="awayover7"></p>
+                        </div>
+                    </div>
+                    <p id="match_summary7"></p>
+                    <a href="/scorecard7.html"><button id="sc7">View Scorecard</button></a>
+                </div>
+              </div>
+          
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+
+</html>

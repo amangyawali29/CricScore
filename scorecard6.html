@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket Live Scores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="favicon icon" sizes="180x180" href="img/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse mynav">
+    <ul class="nav navbar-nav">
+        <li><a href="/index.html" style="font-size: larger;"><img src="img/favicon.png" width="20" height="25">CricScore</a></li>
+    </ul>
+    <p class="navbar-text">Get Live Cricket Score, Scorecard, Schedules</p>
+  </nav>
+
+<p id="series_name1"></p> 
+<p id="match_number1"></p>
+<p id="match_summary1"></p>
+<p id="man_of_the_match1"></p>
+
+<div id="data"></div>
+    
+</body>
+<script>
+
+fetch("https://dev132-cricket-live-scores-v1.p.rapidapi.com/matches.php?completedlimit=5&inprogresslimit=5&upcomingLimit=5", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "dev132-cricket-live-scores-v1.p.rapidapi.com",
+		"x-rapidapi-key": "a47e29ce80mshf6a4fea42339f37p12c725jsne50ee7a8c6bb"
+	}
+}).then(resp=>resp.json()).then(res=>{
+  // series name
+  var series1 = res.matchList.matches[5].series.shortName;
+  document.getElementById("series_name1").innerText=series1;
+
+  // match number and venue
+  var match_number1 = res.matchList.matches[5].name;
+  var venue1 = res.matchList.matches[5].venue.name;
+  document.getElementById("match_number1").innerText=match_number1;
+  document.getElementById("match_number1").innerText += " -"+venue1;
+
+  // match summary
+  var matchSummaryText1 = res.matchList.matches[5].matchSummaryText;
+  var status1 = res.matchList.matches[5].status;
+
+  if(status1 != "COMPLETED"){
+    document.getElementById("man_of_the_match1").style.display="none";
+  }
+  document.getElementById("match_summary1").innerText=status1;
+  document.getElementById("match_summary1").innerText+=" - "+matchSummaryText1;
+
+  // get match id and series id 
+  var matchid1 = res.matchList.matches[5].id;
+  var seriesid1 = res.matchList.matches[5].series.id;
+  
+  fetch(`https://dev132-cricket-live-scores-v1.p.rapidapi.com/scorecards.php?seriesid=${seriesid1}&matchid=${matchid1}`, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "dev132-cricket-live-scores-v1.p.rapidapi.com",
+		"x-rapidapi-key": "a47e29ce80mshf6a4fea42339f37p12c725jsne50ee7a8c6bb"
+  }
+}).then(resp=>resp.json()).then(response=>{
+  console.log(response);
+  // get total innings
+  var inning_numbers = response.fullScorecard.innings;
+  console.log(inning_numbers.length);
+
+  data= document.getElementById("data");
+for (let i=inning_numbers.length-1; i>=0; i-=1){
+
+  inning_name = response.fullScorecard.innings[i].shortName;
+  inning_score = response.fullScorecard.innings[i].run;
+  inning_wicket = response.fullScorecard.innings[i].wicket;
+  inning_over = response.fullScorecard.innings[i].over;
+  inning_runrate = response.fullScorecard.innings[i].runRate;
+  inning_extras = response.fullScorecard.innings[i].extra;
+  inning_wide = response.fullScorecard.innings[i].wide;
+  inning_legby = response.fullScorecard.innings[i].legBye;
+  inning_noball = response.fullScorecard.innings[i].noBall;
+  inning_by = response.fullScorecard.innings[i].bye;
+
+  // creatig element, setting attributes and appending child
+  container_div = document.createElement("div");
+  container_div.setAttribute("class","container");
+  panel_group_div=document.createElement("div");
+  panel_group_div.setAttribute("class","panel-group");
+  panel_default_div = document.createElement("div");
+  panel_default_div.setAttribute("class","panel panel-default");
+  panel_heading_div=document.createElement("div");
+  panel_heading_div.setAttribute("class","panel-heading");
+
+  panel_heading_div.style.backgroundColor= "#484848";
+  panel_heading_div.style.color= "white";
+
+  panel_title_h4 = document.createElement("h4");
+  panel_title_h4.setAttribute("class","panel-title");
+  a= document.createElement("a");
+  a.setAttribute("data-toggle","collapse");
+  a.setAttribute("href","#"+(i+1));
+
+  a_right = document.createElement("div");
+  a_right.setAttribute("id","name_right");
+ 
+
+  a_left = document.createElement("div");
+  a_left.setAttribute("id", "name_left");
+  
+
+  panel_collapse_div = document.createElement('div');
+  panel_collapse_div.setAttribute("class","panel-collapse collapse");
+  panel_collapse_div.setAttribute( "id",i+1);
+  panel_body_div = document.createElement("div");
+  panel_body_div.setAttribute("class", "panel-body");
+  panel_collapse_div.appendChild(panel_body_div);
+  panel_body_div.style.backgroundColor = "LightGray";
+  panel_body_div.innerText="Batsman";
+
+  var batsman_count = response.fullScorecard.innings[i].batsmen;
+  for ( let a = 0; a<batsman_count.length; a++){
+    panel_body_div = document.createElement("div");
+    panel_body_div.setAttribute("class", "panel-body");
+    panel_collapse_div.appendChild(panel_body_div);
+   
+
+    up_div = document.createElement("div");
+    up_div.setAttribute("id", "up");
+    panel_body_div.appendChild(up_div);
+
+    up_float_left = document.createElement("div");
+    up_float_left.setAttribute("id", "up_float_left");
+    up_div.appendChild(up_float_left);
+
+    var batsman_name = response.fullScorecard.innings[i].batsmen[a].name;
+    up_float_left.innerText=batsman_name;
+
+    up_float_right = document.createElement("div");
+    up_float_right.setAttribute("id", "up_float_right");
+    up_div.appendChild(up_float_right);
+
+    var batsman_run = response.fullScorecard.innings[i].batsmen[a].runs;
+    var batsman_ball = response.fullScorecard.innings[i].batsmen[a].balls;
+    var batsman_four = response.fullScorecard.innings[i].batsmen[a].fours;
+    var batsman_six = response.fullScorecard.innings[i].batsmen[a].sixes;
+    var batsman_sr = response.fullScorecard.innings[i].batsmen[a].strikeRate;
+
+    up_float_right.innerText = "(R:"+batsman_run+"  B:"+batsman_ball+"  4s:"+batsman_four+"  6s:"+batsman_six+" SR:"+batsman_sr+")";
+    
+    down_div = document.createElement("div");
+    down_div.setAttribute("id", "down");
+    panel_body_div.appendChild(down_div);
+
+    var how_out = response.fullScorecard.innings[i].batsmen[a].howOut;
+    down_div.innerText = how_out;
+  }
+
+  panel_body_div = document.createElement("div");
+  panel_body_div.setAttribute("class", "panel-body");
+  panel_collapse_div.appendChild(panel_body_div);
+
+  panel_total = document.createElement("div");
+  panel_total.setAttribute("id", "panel_total");
+  panel_body_div.appendChild(panel_total);
+  panel_body_div.style.backgroundColor= "#484848";
+  panel_body_div.style.color= "white";
+  
+
+  panel_total.innerText = "Total: "+inning_score+"-"+inning_wicket+" ("+inning_over+" Overs, RR:"+inning_runrate+")";
+  
+  panel_extra = document.createElement("div");
+  panel_extra.setAttribute("id", "panel_extra");
+  panel_body_div.appendChild(panel_extra);
+  panel_extra.innerText = "Extras: "+inning_extras+" (b "+inning_by+", lb "+inning_legby+", w "+inning_wide+", nb "+inning_noball+")";
+
+  panel_body_div = document.createElement("div");
+  panel_body_div.setAttribute("class", "panel-body");
+  panel_collapse_div.appendChild(panel_body_div);
+  panel_body_div.style.backgroundColor = "LightGray";
+  panel_body_div.innerText="Bowler";
+
+  var bowler_count = response.fullScorecard.innings[i].bowlers;
+  for ( let a = 0; a<bowler_count.length; a++){
+    panel_body_div = document.createElement("div");
+    panel_body_div.setAttribute("class", "panel-body");
+    panel_collapse_div.appendChild(panel_body_div);
+
+    float_left = document.createElement("div");
+    float_left.setAttribute("id","float_left");
+    panel_body_div.appendChild(float_left);
+
+    float_right = document.createElement("div");
+    float_right.setAttribute("id", "float_right");
+    panel_body_div.appendChild(float_right);
+
+    var bowler_name = response.fullScorecard.innings[i].bowlers[a].name;
+    float_left.innerText=bowler_name;
+
+    bowler_over = response.fullScorecard.innings[i].bowlers[a].overs;
+    bowler_maiden = response.fullScorecard.innings[i].bowlers[a].maidens;
+    bowler_wicket = response.fullScorecard.innings[i].bowlers[a].wickets;
+    bowler_runconceded = response.fullScorecard.innings[i].bowlers[a].runsConceded;
+    bolwer_economy = response.fullScorecard.innings[i].bowlers[a].economy;
+
+    float_right.innerText ="("+bowler_over+" - "+bowler_maiden+" - "+bowler_runconceded+" - "+bowler_wicket+"  ER:"+bolwer_economy+")";
+  }
+
+  a.appendChild(a_right);
+  a.appendChild(a_left);
+
+  panel_title_h4.appendChild(a);
+  panel_heading_div.appendChild(panel_title_h4);
+  panel_default_div.appendChild(panel_heading_div);
+  panel_default_div.appendChild(panel_collapse_div);
+  panel_group_div.appendChild(panel_default_div);
+  container_div.appendChild(panel_group_div);
+  data.appendChild(container_div);
+  console.log(container_div);
+
+  var man_of_the_match1 = response.fullScorecardAwards.manOfTheMatchName;
+  document.getElementById("man_of_the_match1").innerText = "Man of the Match : ";
+  document.getElementById("man_of_the_match1").innerText += " "+ man_of_the_match1;
+  a_left.innerText=inning_name;
+  a_right.innerText= "  "+inning_score+"-"+inning_wicket+"  "+"("+inning_over+")";
+
+
+  }
+
+});
+  
+});
+
+</script>
+</html>

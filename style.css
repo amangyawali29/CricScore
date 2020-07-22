@@ -1,0 +1,129 @@
+.ma {
+    height : 30em;
+    background-image: linear-gradient(black, grey, lightblue);
+}
+
+#series_name1, #series_name2, #series_name3, #series_name4, #series_name5, #series_name6, #series_name7 {
+    border:1px solid gray;
+    background-color: black;
+    font-size: 17px;
+    color:rgb(219, 219, 219);
+    margin:0 auto;
+    text-align: center;
+    width: 330px; 
+    border-radius: 5px;
+}
+
+#match_number1, #match_number2, #match_number3, #match_number4, #match_number5, #match_number6, #match_number7 {
+    border:1px solid gray;
+    background-color: black;
+    font-size: 14px;
+    color:rgb(219, 219, 219);
+    margin:0 auto;
+    text-align: center;
+    width: 250px; 
+    border-radius: 5px;
+    margin-top: 0.5em;
+}
+
+#homescore1, #homeover1, #homescore2, #homeover2, #homescore3, #homeover3, #homescore4, #homeover4, #homescore5, #homeover5, #homescore6, #homeover6, #homescore7, #homeover7, #awayscore1, #awayover1, #awayscore2, #awayover2, #awayscore3, #awayover3, #awayscore4, #awayover4, #awayscore5, #awayover5, #awayscore6, #awayover6, #awayscore7, #awayover7{
+    font-size: 22px;;
+} 
+
+#man_of_the_match1{
+    border:1px solid gray;
+    background-color: black;
+    font-size: 14px;
+    color:rgb(219, 219, 219);
+    margin:0 auto;
+    text-align: center;
+    width: 280px; 
+    border-radius: 5px;
+    margin-top: 0.5em;
+}
+
+.teams{
+    display: grid;
+    grid-template-columns: 2fr .1fr 2fr;
+}
+
+#ht{
+    text-align: center;
+    font-size: 25px;
+    color:white;
+
+}
+
+#at{
+    text-align: center;
+    font-size: 25px;
+    color:white;
+}
+
+#hl{
+    margin-top: 1em;
+    font-size: 50px;
+    color:rgb(230, 227, 238);
+    font-family: 'Bungee Shade';
+    margin-bottom: .5em;
+}
+
+#match_summary1, #match_summary2, #match_summary3, #match_summary4, #match_summary5, #match_summary6, #match_summary7{
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    text-decoration: underline;
+}
+
+#home_team1, #away_team1, #home_team2, #away_team2, #home_team3, #away_team3, #home_team4, #away_team4, #home_team5, #away_team5, #home_team6, #away_team6, #home_team7, #away_team7 {
+    color:rgb(219, 219, 219);
+    font-size: 20px;
+    text-decoration: underline;
+}
+.container{
+    width:100%;
+    margin:0;
+    overflow:visible;
+}
+#sc1, #sc2, #sc3, #sc4, #sc5, #sc6, #sc7{
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    border:1px solid gray;
+    background-color: black;
+    font-size: 20px;
+    color:rgb(219, 219, 219);
+    width: 160px; 
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#name_right{
+    float: right;
+    margin-top: -7px;
+}
+
+#name_left{
+    float: left;
+    margin-top: -7px;
+}
+
+#up_float_left {
+    float: left;
+}
+
+#up_float_right{
+    float: right;
+}
+#down, #panel_extra{
+   clear:both;
+}
+
+#float_left, #panel_total, #panel_extra{
+    float: left;
+}
+
+#float_right{
+    float:right;
+}
+
