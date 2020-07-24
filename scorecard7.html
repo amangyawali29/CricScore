@@ -28,7 +28,7 @@
     
 </body>
 <script>
-
+var displaying = true;
 fetch("https://dev132-cricket-live-scores-v1.p.rapidapi.com/matches.php?completedlimit=5&inprogresslimit=5&upcomingLimit=5", {
 	"method": "GET",
 	"headers": {
@@ -228,6 +228,9 @@ for (let i=inning_numbers.length-1; i>=0; i-=1){
   a_left.innerText=inning_name;
   a_right.innerText= "  "+inning_score+"-"+inning_wicket+"  "+"("+inning_over+")";
 
+  if(displaying){
+    a_right.innerHTML +=" "+"&#11167";
+  }
 
   }
 

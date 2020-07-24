@@ -28,6 +28,7 @@
     
 </body>
 <script>
+var displaying = true;
 
 fetch("https://dev132-cricket-live-scores-v1.p.rapidapi.com/matches.php?completedlimit=5&inprogresslimit=5&upcomingLimit=5", {
 	"method": "GET",
@@ -122,7 +123,12 @@ for (let i=inning_numbers.length-1; i>=0; i-=1){
   panel_body_div.style.backgroundColor = "LightGray";
   panel_body_div.innerText="Batsman";
 
+  
+
   var batsman_count = response.fullScorecard.innings[i].batsmen;
+  // if(batsman_count){
+  //   displaying = true;
+  // }
   for ( let a = 0; a<batsman_count.length; a++){
     panel_body_div = document.createElement("div");
     panel_body_div.setAttribute("class", "panel-body");
@@ -227,6 +233,13 @@ for (let i=inning_numbers.length-1; i>=0; i-=1){
   document.getElementById("man_of_the_match1").innerText += " "+ man_of_the_match1;
   a_left.innerText=inning_name;
   a_right.innerText= "  "+inning_score+"-"+inning_wicket+"  "+"("+inning_over+")";
+
+  if(displaying){
+    a_right.innerHTML +=" "+"&#11167";
+  }
+  // else{
+  //   a_right.innerHTML +=" "+"&#11167";
+  // }
 
 
   }
